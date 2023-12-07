@@ -7,15 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83013A382B2014570017E472 /* MerqueoUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83013A372B2014570017E472 /* MerqueoUIKitTests.swift */; };
+		83013A402B2014890017E472 /* NetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83013A3F2B2014890017E472 /* NetworkTest.swift */; };
+		83013A432B20164B0017E472 /* RouteTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83013A422B20164B0017E472 /* RouteTest.swift */; };
+		839E15442B20417D005AAAC3 /* ImageRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839E15432B20417D005AAAC3 /* ImageRoute.swift */; };
+		83DB869D2B22369A00BC7760 /* MovieDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB869C2B22369A00BC7760 /* MovieDataManager.swift */; };
+		83DB86A32B223DF700BC7760 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB86A22B223DF700BC7760 /* UIImageExtension.swift */; };
+		83DB86A52B22406E00BC7760 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB86A42B22406E00BC7760 /* ViewModel.swift */; };
 		83FED2BB2B1EEDBD005A3ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2BA2B1EEDBD005A3ADB /* AppDelegate.swift */; };
 		83FED2BD2B1EEDBD005A3ADB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2BC2B1EEDBD005A3ADB /* SceneDelegate.swift */; };
 		83FED2BF2B1EEDBD005A3ADB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2BE2B1EEDBD005A3ADB /* ViewController.swift */; };
 		83FED2C22B1EEDBD005A3ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FED2C02B1EEDBD005A3ADB /* Main.storyboard */; };
 		83FED2C42B1EEDC0005A3ADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FED2C32B1EEDC0005A3ADB /* Assets.xcassets */; };
 		83FED2C72B1EEDC0005A3ADB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FED2C52B1EEDC0005A3ADB /* LaunchScreen.storyboard */; };
+		83FED2D02B1EF47B005A3ADB /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2CF2B1EF47B005A3ADB /* NetworkProvider.swift */; };
+		83FED2D32B1F087E005A3ADB /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2D22B1F087E005A3ADB /* MovieModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		83013A392B2014570017E472 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83FED2AF2B1EEDBD005A3ADB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 83FED2B62B1EEDBD005A3ADB;
+			remoteInfo = MerqueoUIKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		83013A352B2014570017E472 /* MerqueoUIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MerqueoUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		83013A372B2014570017E472 /* MerqueoUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerqueoUIKitTests.swift; sourceTree = "<group>"; };
+		83013A3F2B2014890017E472 /* NetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTest.swift; sourceTree = "<group>"; };
+		83013A422B20164B0017E472 /* RouteTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTest.swift; sourceTree = "<group>"; };
+		839E15432B20417D005AAAC3 /* ImageRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRoute.swift; sourceTree = "<group>"; };
+		83DB869C2B22369A00BC7760 /* MovieDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataManager.swift; sourceTree = "<group>"; };
+		83DB86A22B223DF700BC7760 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		83DB86A42B22406E00BC7760 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		83FED2B72B1EEDBD005A3ADB /* MerqueoUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MerqueoUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FED2BA2B1EEDBD005A3ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83FED2BC2B1EEDBD005A3ADB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,9 +51,18 @@
 		83FED2C32B1EEDC0005A3ADB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83FED2C62B1EEDC0005A3ADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83FED2C82B1EEDC0005A3ADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83FED2CF2B1EF47B005A3ADB /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		83FED2D22B1F087E005A3ADB /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		83013A322B2014570017E472 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83FED2B42B1EEDBD005A3ADB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,10 +73,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83013A362B2014570017E472 /* MerqueoUIKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				83013A412B20162E0017E472 /* RouteTest */,
+				83013A3E2B2014760017E472 /* NetworkTest */,
+				83013A372B2014570017E472 /* MerqueoUIKitTests.swift */,
+			);
+			path = MerqueoUIKitTests;
+			sourceTree = "<group>";
+		};
+		83013A3E2B2014760017E472 /* NetworkTest */ = {
+			isa = PBXGroup;
+			children = (
+				83013A3F2B2014890017E472 /* NetworkTest.swift */,
+			);
+			path = NetworkTest;
+			sourceTree = "<group>";
+		};
+		83013A412B20162E0017E472 /* RouteTest */ = {
+			isa = PBXGroup;
+			children = (
+				83013A422B20164B0017E472 /* RouteTest.swift */,
+			);
+			path = RouteTest;
+			sourceTree = "<group>";
+		};
+		839E15422B204164005AAAC3 /* ImageRoute */ = {
+			isa = PBXGroup;
+			children = (
+				839E15432B20417D005AAAC3 /* ImageRoute.swift */,
+			);
+			path = ImageRoute;
+			sourceTree = "<group>";
+		};
+		839E15452B2069D5005AAAC3 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				83DB869C2B22369A00BC7760 /* MovieDataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
+		839E15462B2069E6005AAAC3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83DB86A62B22409900BC7760 /* MovieCell */,
+				83FED2BE2B1EEDBD005A3ADB /* ViewController.swift */,
+				83DB86A42B22406E00BC7760 /* ViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83DB86A12B223DDD00BC7760 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				83DB86A22B223DF700BC7760 /* UIImageExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		83DB86A62B22409900BC7760 /* MovieCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieCell;
+			sourceTree = "<group>";
+		};
 		83FED2AE2B1EEDBD005A3ADB = {
 			isa = PBXGroup;
 			children = (
 				83FED2B92B1EEDBD005A3ADB /* MerqueoUIKit */,
+				83013A362B2014570017E472 /* MerqueoUIKitTests */,
 				83FED2B82B1EEDBD005A3ADB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				83FED2B72B1EEDBD005A3ADB /* MerqueoUIKit.app */,
+				83013A352B2014570017E472 /* MerqueoUIKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,9 +161,13 @@
 		83FED2B92B1EEDBD005A3ADB /* MerqueoUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				83DB86A12B223DDD00BC7760 /* Extensions */,
+				839E15462B2069E6005AAAC3 /* Views */,
+				83FED2D12B1F02E4005A3ADB /* Models */,
+				839E15452B2069D5005AAAC3 /* DataManager */,
+				83FED2CE2B1EF299005A3ADB /* Networking */,
 				83FED2BA2B1EEDBD005A3ADB /* AppDelegate.swift */,
 				83FED2BC2B1EEDBD005A3ADB /* SceneDelegate.swift */,
-				83FED2BE2B1EEDBD005A3ADB /* ViewController.swift */,
 				83FED2C02B1EEDBD005A3ADB /* Main.storyboard */,
 				83FED2C32B1EEDC0005A3ADB /* Assets.xcassets */,
 				83FED2C52B1EEDC0005A3ADB /* LaunchScreen.storyboard */,
@@ -67,9 +176,44 @@
 			path = MerqueoUIKit;
 			sourceTree = "<group>";
 		};
+		83FED2CE2B1EF299005A3ADB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				839E15422B204164005AAAC3 /* ImageRoute */,
+				83FED2CF2B1EF47B005A3ADB /* NetworkProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		83FED2D12B1F02E4005A3ADB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83FED2D22B1F087E005A3ADB /* MovieModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		83013A342B2014570017E472 /* MerqueoUIKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83013A3B2B2014570017E472 /* Build configuration list for PBXNativeTarget "MerqueoUIKitTests" */;
+			buildPhases = (
+				83013A312B2014570017E472 /* Sources */,
+				83013A322B2014570017E472 /* Frameworks */,
+				83013A332B2014570017E472 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				83013A3A2B2014570017E472 /* PBXTargetDependency */,
+			);
+			name = MerqueoUIKitTests;
+			productName = MerqueoUIKitTests;
+			productReference = 83013A352B2014570017E472 /* MerqueoUIKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		83FED2B62B1EEDBD005A3ADB /* MerqueoUIKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 83FED2CB2B1EEDC0005A3ADB /* Build configuration list for PBXNativeTarget "MerqueoUIKit" */;
@@ -97,6 +241,10 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					83013A342B2014570017E472 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 83FED2B62B1EEDBD005A3ADB;
+					};
 					83FED2B62B1EEDBD005A3ADB = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -116,11 +264,19 @@
 			projectRoot = "";
 			targets = (
 				83FED2B62B1EEDBD005A3ADB /* MerqueoUIKit */,
+				83013A342B2014570017E472 /* MerqueoUIKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		83013A332B2014570017E472 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83FED2B52B1EEDBD005A3ADB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,17 +290,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		83013A312B2014570017E472 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83013A402B2014890017E472 /* NetworkTest.swift in Sources */,
+				83013A432B20164B0017E472 /* RouteTest.swift in Sources */,
+				83013A382B2014570017E472 /* MerqueoUIKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83FED2B32B1EEDBD005A3ADB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				83FED2BF2B1EEDBD005A3ADB /* ViewController.swift in Sources */,
+				83DB86A52B22406E00BC7760 /* ViewModel.swift in Sources */,
 				83FED2BB2B1EEDBD005A3ADB /* AppDelegate.swift in Sources */,
+				83FED2D32B1F087E005A3ADB /* MovieModel.swift in Sources */,
 				83FED2BD2B1EEDBD005A3ADB /* SceneDelegate.swift in Sources */,
+				83DB869D2B22369A00BC7760 /* MovieDataManager.swift in Sources */,
+				83FED2D02B1EF47B005A3ADB /* NetworkProvider.swift in Sources */,
+				839E15442B20417D005AAAC3 /* ImageRoute.swift in Sources */,
+				83DB86A32B223DF700BC7760 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		83013A3A2B2014570017E472 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 83FED2B62B1EEDBD005A3ADB /* MerqueoUIKit */;
+			targetProxy = 83013A392B2014570017E472 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		83FED2C02B1EEDBD005A3ADB /* Main.storyboard */ = {
@@ -166,6 +346,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		83013A3C2B2014570017E472 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZT49UKYZM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = PruebaUIKit.MerqueoUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MerqueoUIKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MerqueoUIKit";
+			};
+			name = Debug;
+		};
+		83013A3D2B2014570017E472 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZT49UKYZM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = PruebaUIKit.MerqueoUIKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MerqueoUIKit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MerqueoUIKit";
+			};
+			name = Release;
+		};
 		83FED2C92B1EEDC0005A3ADB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -226,6 +442,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO;
 			};
 			name = Debug;
 		};
@@ -266,6 +483,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -281,6 +499,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -310,6 +529,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				"TEST_HOST[sdk=*]" = "";
 			};
 			name = Debug;
 		};
@@ -344,6 +564,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		83013A3B2B2014570017E472 /* Build configuration list for PBXNativeTarget "MerqueoUIKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83013A3C2B2014570017E472 /* Debug */,
+				83013A3D2B2014570017E472 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		83FED2B22B1EEDBD005A3ADB /* Build configuration list for PBXProject "MerqueoUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
