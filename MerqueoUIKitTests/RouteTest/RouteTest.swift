@@ -28,9 +28,25 @@ final class RouteTest: XCTestCase {
     
     func testImageRoute() {
         //Given
-        let urlRequest = ImageRoute.backDropPath(value: "/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg").urlRequestComplete
+        let urlRequest = MovieResourceRoutes.posterPath(value: "/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg").urlRequestComplete
         //When
-        let expecterURL = "https://image.tmdb.org/t/p/w200/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg"
+        let expecterURL = "https://image.tmdb.org/t/p/w300/pD6sL4vntUOXHmuvJPPZAgvyfd9.jpg"
+        //Then
+        XCTAssertEqual(expecterURL, urlRequest.url?.absoluteString ?? "")
+    }
+    func testPageRoute() {
+        //Given
+        let urlRequest = MovieResourceRoutes.pageRoute(page: 3).urlRequestComplete
+        //When
+        let expecterURL = "https://api.themoviedb.org/3/discover/movie?api_key=1e8867b1626434a57994c431d6d77ef9&sort_by=popularity.desc&page=3"
+        //Then
+        XCTAssertEqual(expecterURL, urlRequest.url?.absoluteString ?? "")
+    }
+    func testCreditsRoute() {
+        //Given
+        let urlRequest = MovieResourceRoutes.credistPath(MoviewID: 787699).urlRequestComplete
+        //When
+        let expecterURL = "https://api.themoviedb.org/3/movie/787699/credits?api_key=1e8867b1626434a57994c431d6d77ef9"
         //Then
         XCTAssertEqual(expecterURL, urlRequest.url?.absoluteString ?? "")
     }

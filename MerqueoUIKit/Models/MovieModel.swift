@@ -22,7 +22,7 @@ struct MovieModel: Codable {
 
 struct Info: Codable, Hashable {
     var adult: Bool
-    var backdropPath: String
+    var backdropPath: String?
     var genreIds: [Int]
     var id: Int
     var originalLanguage: String
