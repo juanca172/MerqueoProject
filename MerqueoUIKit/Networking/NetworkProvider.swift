@@ -12,15 +12,15 @@ protocol NetworkProviderProtocol {
 }
 
 enum NetworkError: Error, Equatable {
-    case decodingError
+    case decodingError(errorGet: Error)
     case networkError
     case statusCodeError
 }
 extension NetworkError {
     static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
         switch (lhs, rhs) {
-        case (.decodingError, .decodingError):
-            return true
+        case (.decodingError(let error1), .decodingError(let error2)):
+            return "\(error1)" == "\(error2)"
         case (.networkError, .networkError):
             return true
         case (.statusCodeError, .statusCodeError):
@@ -50,10 +50,11 @@ struct NetworkProvider: NetworkProviderProtocol {
             if response.statusCode >= 500 && response.statusCode <= 599 {
                 throw NetworkError.networkError
             }
+            jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.formattYYYYMMDD)
             let success = try jsonDecoder.decode(T.self, from: data)
             return success
-        } catch let _ as DecodingError {
-            throw NetworkError.decodingError
+        } catch let error as DecodingError {
+            throw NetworkError.decodingError(errorGet: error)
         }
     }
     

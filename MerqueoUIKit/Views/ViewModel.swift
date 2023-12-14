@@ -13,29 +13,44 @@ protocol ViewModelProtocol {
     func getNumberOfSections() -> Int
     func getNumberOfRows(_ sections: Int)-> Int
     func snapshotToApply()
+    var anyPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Int, Info>, Never> { get }
+    func loadNextPage()
 }
 final class ViewModel {
-    var informacion: [[Info]] = []
-    let publisherData = PassthroughSubject<[Info], Never>()
+    var informacion: [[Info]] = [] {
+        didSet {
+            snapshotToApply() 
+        }
+    }
+    var page = 1
+    let publisherData = PassthroughSubject<NSDiffableDataSourceSnapshot<Int, Info>, Never>()
     let dataManager: MovieDataManagerProtocol
-    var anyPublisher: AnyPublisher<[Info], Never> {
+    var anyPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Int, Info>, Never> {
         publisherData.eraseToAnyPublisher()
     }
-    var snapShot = NSDiffableDataSourceSnapshot<Int, Info>()
     init(DataManager: MovieDataManagerProtocol = MovieDataManager(networkProvider: NetworkProvider())) {
         self.dataManager = DataManager
-        start()
     }
     func getData(page: Int) {
         Task {
-            let data: MovieModel = await dataManager.getDataFromMoview()
-            informacion.append(data.results)
+            do {
+                let data: MovieModel = try await dataManager.getDataFromMoview(pageToFectch: page)
+                informacion.append(data.results)
+            } catch {
+                print("Error \(error.localizedDescription)")
+            }
         }
     }
 }
 extension ViewModel: ViewModelProtocol {
+    func loadNextPage() {
+        page += 1
+        getData(page: page)
+        
+    }
+    
     func start() {
-        getData(page: 1)
+        getData(page: page)
     }
     
     func getNumberOfSections() -> Int {
@@ -47,14 +62,15 @@ extension ViewModel: ViewModelProtocol {
     }
     
     func snapshotToApply() {
+        var snapShot = NSDiffableDataSourceSnapshot<Int, Info>()
         var sections: [Int] = []
-        for i in 1..<getNumberOfSections() {
+        for i in 0..<getNumberOfSections() {
             sections.append(i)
         }
         snapShot.appendSections(sections)
         for i in sections {
             snapShot.appendItems(informacion[i], toSection: i)
-            publisherData.send(informacion[i])
+            publisherData.send(snapShot)
         }
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 protocol MovieDataManagerProtocol {
-    func getDataFromMoview<T:Decodable>() async -> T
+    func getDataFromMoview(pageToFectch: Int) async throws -> MovieModel
+    func getDataFromCredits(idToFetch: Int) async throws -> CreditsModel
 }
 struct MovieDataManager {
     let networkProvider: NetworkProviderProtocol
@@ -17,8 +18,12 @@ struct MovieDataManager {
     }
 }
 extension MovieDataManager: MovieDataManagerProtocol {
-    func getDataFromMoview <T:Decodable>() async -> T {
-        let urlRequest = URLRequest(url: URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=1e8867b1626434a57994c431d6d77ef9&sort_by=popularity.desc")!)
-        return try! await networkProvider.fetcher(request: urlRequest)
+    func getDataFromCredits(idToFetch: Int) async throws -> CreditsModel {
+        let request = MovieResourceRoutes.credistPath(MoviewID: idToFetch).urlRequestComplete
+        return try await networkProvider.fetcher(request: request)
+    }
+    func getDataFromMoview(pageToFectch: Int) async throws -> MovieModel {
+        let urlRequest = MovieResourceRoutes.pageRoute(page: pageToFectch).urlRequestComplete
+        return try await networkProvider.fetcher(request: urlRequest)
     }
 }

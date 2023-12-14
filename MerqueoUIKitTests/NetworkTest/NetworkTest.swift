@@ -32,12 +32,12 @@ final class NetworkTest: XCTestCase {
     
     func testGetDataFromServer() {
         //Given
-        guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=1e8867b1626434a57994c431d6d77ef9&sort_by=popularity.desc&page=1") else { return }
+        guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=1e8867b1626434a57994c431d6d77ef9&sort_by=popularity.desc&page=2") else { return }
         let urlRequest = URLRequest(url: url)
         let networking = NetworkProvider()
         //When
-        let responseExpected = 1
-        let totalPagesExpected = 41338
+        let responseExpected = 2
+        let totalPagesExpected = 41460
         let expectation = XCTestExpectation(description: "testGetDataFromServer")
         
         Task {
@@ -49,10 +49,10 @@ final class NetworkTest: XCTestCase {
                 expectation.fulfill()
             } catch let error as NetworkError {
                 switch error {
-                case .decodingError:
-                    print(error)
+                case .decodingError(errorGet: let error):
+                    print("\(error) decoding")
                 case .networkError:
-                    print(error)
+                    print("\(error) network")
                 case .statusCodeError:
                     print("Estatus code error")
                 }
@@ -60,7 +60,36 @@ final class NetworkTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 1.0)
     }
-    
+    func testGetCreditsData() {
+        //Given
+        let url = URL(string: "https://api.themoviedb.org/3/movie/787699/credits?api_key=1e8867b1626434a57994c431d6d77ef9")
+        guard let url = url else { return }
+        let urlRequest = URLRequest(url: url)
+        let networking = NetworkProvider()
+        //When
+        let expectedID = 787699
+        let expectedName = "Timothée Chalamet"
+        let expectedNameCrew = "Roald Dahl"
+        let expectation = expectation(description: "testGetCreditsData")
+        Task{
+            do {
+                let value: CreditsModel = try await networking.fetcher(request: urlRequest)
+                XCTAssertEqual(value.id, expectedID)
+                XCTAssertEqual(value.cast[0].name, expectedName)
+                expectation.fulfill()
+            } catch let error as NetworkError {
+                switch error {
+                case .decodingError(errorGet: let error):
+                    print("\(error) decoding")
+                case .networkError:
+                    print("\(error) network")
+                case .statusCodeError:
+                    print("Estatus code error")
+                }
+            }
+        }
+        wait(for: [expectation],timeout: 1.0)
+    }
     func testMockRespond() {
         //Given
         let apiURL = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=1e8867b1626434a57994c431d6d77ef9&sort_by=popularity.desc&page=1")!
@@ -111,7 +140,14 @@ final class NetworkTest: XCTestCase {
             do {
                 var _: [String] = try await networkProvider.fetcher(request: urlRequest)
             } catch let error as NetworkError {
-                XCTAssertEqual(error, NetworkError.decodingError)
+                switch error {
+                case .decodingError(errorGet: let error1):
+                    XCTAssertEqual(error, NetworkError.decodingError(errorGet: error1))
+                case .networkError:
+                    break
+                case .statusCodeError:
+                    break
+                }
                 expectation.fulfill()
             }
             
