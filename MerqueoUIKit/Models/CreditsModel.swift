@@ -9,9 +9,10 @@ import Foundation
 
 struct CreditsModel: Codable {
     var id: Int
-    var cast: [castModel]
+    var cast: [CastModel]
+    var crew: [CrewModel]
 }
-struct castModel: Codable {
+struct CastModel: Codable {
     var adult: Bool
     var gender: Int
     var id: Int
@@ -19,7 +20,7 @@ struct castModel: Codable {
     var name: String
     var originalName: String
     var popularity: Double
-    var profilePath: String
+    var profilePath: String?
     var castId: Int
     var character: String
     var creditId: String
@@ -38,4 +39,31 @@ struct castModel: Codable {
         case creditId = "credit_id"
         case order
     }
+}
+struct CrewModel: Codable {
+    var adult: Bool
+    var gender: Int
+    var id: Int
+    var knownForDepartment: String
+    var name: String
+    var originalName: String
+    var popularity: Double
+    var profilePath: String?
+    var creditId: String
+    var department: String
+    var job: String
+    enum CodingKeys: String, CodingKey {
+        case adult
+        case gender
+        case id
+        case knownForDepartment = "known_for_department"
+        case name
+        case originalName = "original_name"
+        case popularity
+        case profilePath = "profile_path"
+        case creditId = "credit_id"
+        case department
+        case job
+    }
+    
 }

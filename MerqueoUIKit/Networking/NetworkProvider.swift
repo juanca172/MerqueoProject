@@ -50,6 +50,7 @@ struct NetworkProvider: NetworkProviderProtocol {
             if response.statusCode >= 500 && response.statusCode <= 599 {
                 throw NetworkError.networkError
             }
+            jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.formattYYYYMMDD)
             let success = try jsonDecoder.decode(T.self, from: data)
             return success
         } catch let error as DecodingError {

@@ -18,6 +18,8 @@
 		83DB869D2B22369A00BC7760 /* MovieDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB869C2B22369A00BC7760 /* MovieDataManager.swift */; };
 		83DB86A32B223DF700BC7760 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB86A22B223DF700BC7760 /* UIImageExtension.swift */; };
 		83DB86A52B22406E00BC7760 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DB86A42B22406E00BC7760 /* ViewModel.swift */; };
+		83E3CF272B2A9F2E00280837 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3CF262B2A9F2E00280837 /* DateFormatterExtension.swift */; };
+		83E3CF2A2B2AE40700280837 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3CF292B2AE40700280837 /* Coordinator.swift */; };
 		83E8E17D2B257C72002EBF71 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E8E17C2B257C72002EBF71 /* MovieCell.swift */; };
 		83FED2BB2B1EEDBD005A3ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2BA2B1EEDBD005A3ADB /* AppDelegate.swift */; };
 		83FED2BD2B1EEDBD005A3ADB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FED2BC2B1EEDBD005A3ADB /* SceneDelegate.swift */; };
@@ -52,6 +54,8 @@
 		83DB869C2B22369A00BC7760 /* MovieDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataManager.swift; sourceTree = "<group>"; };
 		83DB86A22B223DF700BC7760 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		83DB86A42B22406E00BC7760 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		83E3CF262B2A9F2E00280837 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		83E3CF292B2AE40700280837 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		83E8E17C2B257C72002EBF71 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		83FED2B72B1EEDBD005A3ADB /* MerqueoUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MerqueoUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FED2BA2B1EEDBD005A3ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				83DB86A22B223DF700BC7760 /* UIImageExtension.swift */,
+				83E3CF262B2A9F2E00280837 /* DateFormatterExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -160,6 +165,14 @@
 				83D1A2922B27956F00DAB543 /* MovieCellViewModel.swift */,
 			);
 			path = MovieCell;
+			sourceTree = "<group>";
+		};
+		83E3CF282B2AE3EF00280837 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				83E3CF292B2AE40700280837 /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		83FED2AE2B1EEDBD005A3ADB = {
@@ -183,6 +196,7 @@
 		83FED2B92B1EEDBD005A3ADB /* MerqueoUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				83E3CF282B2AE3EF00280837 /* Coordinator */,
 				83DB86A12B223DDD00BC7760 /* Extensions */,
 				839E15462B2069E6005AAAC3 /* Views */,
 				83FED2D12B1F02E4005A3ADB /* Models */,
@@ -327,8 +341,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83E3CF2A2B2AE40700280837 /* Coordinator.swift in Sources */,
 				83CDC7582B2956F300A6940E /* CreditsModel.swift in Sources */,
 				83D1A2932B27956F00DAB543 /* MovieCellViewModel.swift in Sources */,
+				83E3CF272B2A9F2E00280837 /* DateFormatterExtension.swift in Sources */,
 				83FED2BF2B1EEDBD005A3ADB /* ViewController.swift in Sources */,
 				83CDC7562B29069A00A6940E /* ViewDetailMovieViewModel.swift in Sources */,
 				83CDC7542B28CB2000A6940E /* ViewDetailMovie.swift in Sources */,

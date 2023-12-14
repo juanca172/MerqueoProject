@@ -73,7 +73,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseIdetifier)
         dataSource = UICollectionViewDiffableDataSource<Int, Info>(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdetifier, for: indexPath) as? MovieCell else { assert(false, "Error to cast") }
-            let viewModel = MovieCellViewModel(info: itemIdentifier)
+            let viewModel: MoviewCellViewModelProtocol = MovieCellViewModel(info: itemIdentifier)
             cell.setUp(viewModelCell: viewModel)
             return cell
         }

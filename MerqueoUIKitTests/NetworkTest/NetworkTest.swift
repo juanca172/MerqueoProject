@@ -37,7 +37,7 @@ final class NetworkTest: XCTestCase {
         let networking = NetworkProvider()
         //When
         let responseExpected = 2
-        let totalPagesExpected = 41424
+        let totalPagesExpected = 41460
         let expectation = XCTestExpectation(description: "testGetDataFromServer")
         
         Task {
@@ -69,6 +69,7 @@ final class NetworkTest: XCTestCase {
         //When
         let expectedID = 787699
         let expectedName = "Timothée Chalamet"
+        let expectedNameCrew = "Roald Dahl"
         let expectation = expectation(description: "testGetCreditsData")
         Task{
             do {
