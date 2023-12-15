@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import SwiftUI
 
 class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate {
     
@@ -14,6 +15,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     var viewModel: ViewModelProtocol?
     var anyCancellable: AnyCancellable?
     var recharge = false
+    weak var navBarCoordinator: Coordinator?
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout())
@@ -30,7 +32,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        collectionView.backgroundColor = .blue
+        self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseIdetifier)
+        collectionView.backgroundColor = .black
         configureViewModel()
         configureDataSource()
         collectionView.delegate = self
@@ -70,7 +73,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         dataSource?.apply(snapshot)
     }
     private func configureDataSource() {
-        self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseIdetifier)
         dataSource = UICollectionViewDiffableDataSource<Int, Info>(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseIdetifier, for: indexPath) as? MovieCell else { assert(false, "Error to cast") }
             let viewModel: MoviewCellViewModelProtocol = MovieCellViewModel(info: itemIdentifier)
@@ -79,6 +81,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         }
     }
 }
+//MARK: Extension for recharge
 extension ViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let height = scrollView.contentOffset.y
@@ -88,6 +91,14 @@ extension ViewController {
                 viewModel?.loadNextPage()
             }
         }
+    }
+}
+extension ViewController {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let dataToShow = viewModel?.infoForDetail(index: indexPath) else { return }
+        let detailViewModel = ViewDetailMovieViewModel(info: dataToShow)
+        let viewController = UIHostingController(rootView: ViewDetailMovie(viewModel: detailViewModel))
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

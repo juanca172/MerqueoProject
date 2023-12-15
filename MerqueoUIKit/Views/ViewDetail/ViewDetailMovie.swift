@@ -8,25 +8,30 @@
 import SwiftUI
 
 struct ViewDetailMovie: View {
-    var viewModel: ViewDetailMovieViewModel
+    @StateObject var viewModel: ViewDetailMovieViewModel
     var body: some View {
         ScrollView {
             ZStack (alignment: .center){
                 AsyncImage(url: viewModel.image).cornerRadius(10).background(.black)
                     .scaledToFill()
-            }.frame(width: .infinity)
+            }
             VStack (alignment: .leading,spacing: 5) {
-                Text("\(viewModel.title)").font(.title).padding()
-                Text("Summary").font(.title)
-                Text("\(viewModel.descripcion)").padding()
-                Text("Cast").font(.title)
-                Text("\(viewModel.cast)").padding()
-                Text("Directors").font(.title)
-                Text("\(viewModel.director)").padding()
-                Text("Year").font(.title)
-                Text("\(viewModel.year)").padding()
+                Text("Summary").font(.title).foregroundColor(.red)
+                Text("\(viewModel.descripcion)").padding().foregroundColor(.white)
+                Text("Cast").font(.title).foregroundColor(.red)
+                Text("\(viewModel.cast ?? "")").padding().foregroundColor(.white)
+                Text("Directors").font(.title).foregroundColor(.red)
+                Text("\(viewModel.director ?? "")").padding().foregroundColor(.white)
+                Text("Year").font(.title).foregroundColor(.red)
+                Text("\(viewModel.year)").padding().foregroundColor(.white)
             }.padding()
         }.clipped()
+            .navigationTitle("\(viewModel.title)")
+            .navigationBarTitleDisplayMode(.automatic)
+            .background(Color.black)
+            .task {
+                await viewModel.getCreditsData()
+            }
     }
 }
 
