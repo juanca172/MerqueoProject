@@ -37,7 +37,6 @@ extension MovieCell {
     private func addContainer() {
         container = UIView()
         addSubview(container)
-        container.frame = frame
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
@@ -45,7 +44,7 @@ extension MovieCell {
             container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
-        container.backgroundColor = .black
+        container.backgroundColor = .white
         container.layer.cornerRadius = 20
     }
     private func addImage() {

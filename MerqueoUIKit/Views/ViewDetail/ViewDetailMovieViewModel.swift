@@ -9,18 +9,19 @@ import Foundation
 
 protocol ViewDetailMovieViewModelProtocol {
     //func setUp(movie: MovieModel)
-    func getCreditsData()
+    func getCreditsData() async
 }
 
-final class ViewDetailMovieViewModel: ViewDetailMovieViewModelProtocol {
+final class ViewDetailMovieViewModel: ViewDetailMovieViewModelProtocol, ObservableObject {
     var info: Info
     var dataManager: MovieDataManagerProtocol
     private var castNames: String = ""
     private var directorData: [CrewModel] = []
+    @Published var cast: String?
+    @Published var director: String?
     init(info: Info, dataManager: MovieDataManagerProtocol = MovieDataManager()) {
         self.info = info
         self.dataManager = dataManager
-        self.getCreditsData()
     }
     var title: String {
         info.title
@@ -31,19 +32,13 @@ final class ViewDetailMovieViewModel: ViewDetailMovieViewModelProtocol {
     var descripcion: String {
         info.overview
     }
-    var cast: String {
-        castNames
-    }
-    var director: String {
-        directorData.first?.name ?? "no found"
-    }
     var year: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         return info.releaseDate.formatted(.dateTime.year())
     }
 
-    func getCreditsData() {
+    func getCreditsData() async {
         Task {
             do {
                 let data: CreditsModel = try await dataManager.getDataFromCredits(idToFetch: info.id)
@@ -55,8 +50,10 @@ final class ViewDetailMovieViewModel: ViewDetailMovieViewModelProtocol {
                     }
                 })
                 let arrayNames = data.cast.map({ $0.name })
-                castNames = arrayNames.joined(separator: ",")
-                print(castNames)
+                await MainActor.run {
+                    cast = arrayNames.joined(separator: ",")
+                    director = directorData.first?.name ?? "No found"
+                }
             } catch {
                 print(error)
             }

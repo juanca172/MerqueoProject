@@ -15,6 +15,7 @@ protocol ViewModelProtocol {
     func snapshotToApply()
     var anyPublisher: AnyPublisher<NSDiffableDataSourceSnapshot<Int, Info>, Never> { get }
     func loadNextPage()
+    func infoForDetail(index: IndexPath) -> Info
 }
 final class ViewModel {
     var informacion: [[Info]] = [] {
@@ -43,24 +44,23 @@ final class ViewModel {
     }
 }
 extension ViewModel: ViewModelProtocol {
+    func infoForDetail(index: IndexPath) -> Info {
+        let data = informacion[index.section][index.row]
+        return data
+    }
     func loadNextPage() {
         page += 1
         getData(page: page)
-        
     }
-    
     func start() {
         getData(page: page)
     }
-    
     func getNumberOfSections() -> Int {
         return informacion.count
     }
-    
     func getNumberOfRows(_ sections: Int) -> Int {
         return informacion[sections].count
     }
-    
     func snapshotToApply() {
         var snapShot = NSDiffableDataSourceSnapshot<Int, Info>()
         var sections: [Int] = []
