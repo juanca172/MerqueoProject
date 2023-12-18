@@ -22,7 +22,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
@@ -39,7 +38,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         collectionView.delegate = self
         // Do any additional setup after loading the view.
     }
-    
+    deinit {
+        print("Main View Dealocated")
+    }
     private func configureViewModel() {
         viewModel = ViewModel()
         viewModel?.start()
@@ -59,7 +60,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                 self.recharge = true
             })
     }
-    
     private func collectionLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(180.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -98,7 +98,7 @@ extension ViewController {
         guard let dataToShow = viewModel?.infoForDetail(index: indexPath) else { return }
         let detailViewModel = ViewDetailMovieViewModel(info: dataToShow)
         let viewController = UIHostingController(rootView: ViewDetailMovie(viewModel: detailViewModel))
-        navigationController?.pushViewController(viewController, animated: true)
+        navBarCoordinator?.pushViewController(ViewController: viewController, navigationController: navigationController)
     }
 }
 

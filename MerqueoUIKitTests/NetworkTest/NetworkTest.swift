@@ -69,7 +69,6 @@ final class NetworkTest: XCTestCase {
         //When
         let expectedID = 787699
         let expectedName = "Timothée Chalamet"
-        let expectedNameCrew = "Roald Dahl"
         let expectation = expectation(description: "testGetCreditsData")
         Task{
             do {
@@ -109,7 +108,7 @@ final class NetworkTest: XCTestCase {
         Task {
             //Then
             do {
-                var data: [String] = try await networkProvider.fetcher(request: urlRequest)
+                let data: [String] = try await networkProvider.fetcher(request: urlRequest)
                 XCTAssertEqual(data[0], "Juan")
                 expectation.fulfill()
             } catch {
@@ -128,7 +127,7 @@ final class NetworkTest: XCTestCase {
         let urlSession = URLSession(configuration: config)
         let expectation = expectation(description: "testMockResponseErrorDecodingError")
         MockURLResponder.respond = { request in
-            var data: Data? = nil
+            let data: Data? = nil
             let dataRespond = try! JSONEncoder().encode(data)
             let http = HTTPURLResponse(url: apiURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (http, dataRespond)

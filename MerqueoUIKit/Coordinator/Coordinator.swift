@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 protocol Coordinator: AnyObject {
-    var getRootViewController: UIViewController { get }
-    func presentViewController(viewController: UIViewController)
-    func pushViewController(ViewController: UIViewController)
+    var getRootViewController: UINavigationController { get }
+    func presentViewController(viewController: UIViewController, navigationController: UINavigationController?)
+    func pushViewController(ViewController: UIViewController,navigationController: UINavigationController?)
 }
 
 final class NavigationController: UINavigationController {
@@ -23,21 +23,22 @@ final class NavigationController: UINavigationController {
     }
 }
 final class ViewToPresent: Coordinator {
-    var getRootViewController: UIViewController {
+    var getRootViewController: UINavigationController {
         let viewControllerMain = ViewController()
         let navigationController = NavigationController(for: viewControllerMain)
-        viewControllerMain.navigationItem.title = "Moview"
+        viewControllerMain.navigationItem.title = "Movie"
+        viewControllerMain.navBarCoordinator = self
         viewControllerMain.navigationController?.navigationBar.prefersLargeTitles = true
         viewControllerMain.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         viewControllerMain.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.red]
         return navigationController
     }
-    func presentViewController(viewController: UIViewController) {
-        let view = getRootViewController
-        view.children.first?.navigationController?.present(viewController, animated: true)
+    func presentViewController(viewController: UIViewController, navigationController: UINavigationController?) {
+        guard let navigation = navigationController else { return }
+        navigation.present(viewController, animated: true)
     }
-    func pushViewController(ViewController: UIViewController) {
-        let view = getRootViewController
-        view.children.first?.navigationController?.pushViewController(ViewController, animated: true)
+    func pushViewController(ViewController: UIViewController, navigationController: UINavigationController?) {
+        guard let navigation = navigationController else { return }
+        navigation.pushViewController(ViewController, animated: true)
     }
 }
