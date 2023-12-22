@@ -16,6 +16,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     var anyCancellable: AnyCancellable?
     var recharge = false
     weak var navBarCoordinator: Coordinator?
+    var searchController: UISearchController!
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout())
@@ -24,6 +25,29 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpSearchBar()
+        setUpCollectionView()
+        configureViewModel()
+        configureDataSource()
+        collectionView.delegate = self
+        // Do any additional setup after loading the view.
+    }
+    deinit {
+        print("Main View Dealocated")
+    }
+    private func setUpSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Search Moview"
+        self.searchController.searchBar.backgroundColor = .lightText
+        self.searchController.tabBarItem.badgeColor = .white
+        self.navigationItem.searchController = searchController
+        self.definesPresentationContext = false
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    private func setUpCollectionView() {
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -33,13 +57,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         ])
         self.collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseIdetifier)
         collectionView.backgroundColor = .black
-        configureViewModel()
-        configureDataSource()
-        collectionView.delegate = self
-        // Do any additional setup after loading the view.
-    }
-    deinit {
-        print("Main View Dealocated")
     }
     private func configureViewModel() {
         viewModel = ViewModel()
@@ -79,6 +96,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             cell.setUp(viewModelCell: viewModel)
             return cell
         }
+    }
+}
+//MARK: Extension for filter
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel?.updateSearchData(searchBarText: searchController.searchBar.text)
     }
 }
 //MARK: Extension for recharge
