@@ -39,10 +39,13 @@ extension MovieCell {
         addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            container.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            container.centerXAnchor.constraint(equalTo: centerXAnchor),
+            container.centerYAnchor.constraint(equalTo: centerYAnchor),
             container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            container.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            container.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            
         ])
         container.backgroundColor = .white
         container.layer.cornerRadius = 20
@@ -54,10 +57,10 @@ extension MovieCell {
         uiImage.image = UIImage(systemName: "multiply.circle.fill")
         uiImage.contentMode = .scaleAspectFit
         NSLayoutConstraint.activate([
-            uiImage.topAnchor.constraint(equalTo: container.topAnchor, constant: 5),
-            uiImage.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 10),
-            uiImage.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -10),
-            uiImage.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10),
+            uiImage.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            uiImage.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            uiImage.widthAnchor.constraint(equalTo: container.widthAnchor, multiplier: 1.0),
+            uiImage.topAnchor.constraint(equalTo: container.topAnchor, constant: 0)
         ])
 
         uiImage.layer.cornerRadius = 20

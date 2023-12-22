@@ -33,8 +33,6 @@ final class ViewDetailMovieViewModel: ViewDetailMovieViewModelProtocol, Observab
         info.overview
     }
     var year: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
         return info.releaseDate.formatted(.dateTime.year())
     }
 

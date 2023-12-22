@@ -26,7 +26,8 @@ extension MovieResourceRoutes {
             return urlComponents?.url?.absoluteURL
         case.pageRoute(page: let pageNumber):
             if pageNumber <= 500 {
-                var urlComponents = URLComponents(string: "https://api.themoviedb.org/3/discover/movie")
+                var urlComponents = URLComponents(string: "https://api.themoviedb.org")
+                urlComponents?.path = "/3/discover/movie"
                 let apiKey = URLQueryItem(name: "api_key", value: "1e8867b1626434a57994c431d6d77ef9")
                 let queryItems = URLQueryItem(name: "page", value: String(pageNumber))
                 let sortQuery = URLQueryItem(name: "sort_by", value: "popularity.desc")
