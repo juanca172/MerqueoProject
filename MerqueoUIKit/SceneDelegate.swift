@@ -6,11 +6,21 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let view: Coordinator = ViewToPresent()
+    lazy var persistentContainer: NSPersistentContainer = {
+      let container = NSPersistentContainer(name: "MovieCoreData")
+      container.loadPersistentStores {_, error in
+        if let error = error {
+          fatalError("Could not load data store: \(error)")
+        }
+    }
+      return container
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -20,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: sceneManager)
         window.rootViewController = view.getRootViewController
         window.makeKeyAndVisible()
+        lazy var managedObjectContext = persistentContainer.viewContext
         self.window = window
     }
 
