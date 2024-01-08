@@ -12,8 +12,9 @@ struct ViewDetailMovie: View {
     var body: some View {
         ScrollView {
             ZStack (alignment: .center){
-                AsyncImage(url: viewModel.image).cornerRadius(10).background(.black)
-                    .scaledToFill()
+                AsyncImage(url: viewModel.image).cornerRadius(10)
+                    .background(.black)
+                    .aspectRatio(contentMode: .fill)
             }
             VStack (alignment: .leading,spacing: 5) {
                 Text("Summary").font(.title).foregroundColor(.red)
@@ -25,7 +26,7 @@ struct ViewDetailMovie: View {
                 Text("Year").font(.title).foregroundColor(.red)
                 Text("\(viewModel.year)").padding().foregroundColor(.white)
             }.padding()
-        }.clipped()
+        }
             .navigationTitle("\(viewModel.title)")
             .navigationBarTitleDisplayMode(.automatic)
             .background(Color.black)
