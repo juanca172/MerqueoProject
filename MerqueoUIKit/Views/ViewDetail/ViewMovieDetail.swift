@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct ViewDetailMovie: View {
+struct ViewMovieDetail: View {
     @StateObject var viewModel: ViewDetailMovieViewModel
+    @State private var like = false
     var body: some View {
         ScrollView {
             ZStack (alignment: .center){
@@ -26,7 +27,19 @@ struct ViewDetailMovie: View {
                 Text("Year").font(.title).foregroundColor(.red)
                 Text("\(viewModel.year)").padding().foregroundColor(.white)
             }.padding()
+            HStack (alignment: .center) {
+                Button("Agregar a favoritos") {
+                    like.toggle()
+                }
+                Image(systemName: like ? "heart.fill": "heart")
+            }
+            .padding()
+            .frame(width: .infinity,height: 80)
+            .background(Color(cgColor: CGColor(red: 20, green: 20, blue: 20, alpha: 0.2)))
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 30, height: 30), style: .continuous))
         }
+            .padding()
             .navigationTitle("\(viewModel.title)")
             .navigationBarTitleDisplayMode(.automatic)
             .background(Color.black)
@@ -37,5 +50,5 @@ struct ViewDetailMovie: View {
 }
 
 #Preview {
-    ViewDetailMovie(viewModel: .init(info: .init(adult: false, genreIds: [80,18,36], id: 466420, originalLanguage: "en", originalTitle: "Killers of the Flower Moon", overview: "When oil is discovered in 1920s Oklahoma under Osage Nation land, the Osage people are murdered one by one—until the FBI steps in to unravel the mystery.", popularity: 2057.537, posterPath: "/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg", releaseDate: Date(), title: "Killers of the Flower Moon", video: false, voteAverage:  7.669, voteCount: 1338)))
+    ViewMovieDetail(viewModel: .init(info: .init(adult: false, genreIds: [80,18,36], id: 466420, originalLanguage: "en", originalTitle: "Killers of the Flower Moon", overview: "When oil is discovered in 1920s Oklahoma under Osage Nation land, the Osage people are murdered one by one—until the FBI steps in to unravel the mystery.", popularity: 2057.537, posterPath: "/dB6Krk806zeqd0YNp2ngQ9zXteH.jpg", releaseDate: Date(), title: "Killers of the Flower Moon", video: false, voteAverage:  7.669, voteCount: 1338)))
 }

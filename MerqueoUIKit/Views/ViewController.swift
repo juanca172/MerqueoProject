@@ -120,7 +120,7 @@ extension ViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let dataToShow = viewModel?.infoForDetail(index: indexPath) else { return }
         let detailViewModel = ViewDetailMovieViewModel(info: dataToShow)
-        let viewController = UIHostingController(rootView: ViewDetailMovie(viewModel: detailViewModel))
+        let viewController = UIHostingController(rootView: ViewMovieDetail(viewModel: detailViewModel))
         navBarCoordinator?.pushViewController(ViewController: viewController, navigationController: navigationController)
     }
 }

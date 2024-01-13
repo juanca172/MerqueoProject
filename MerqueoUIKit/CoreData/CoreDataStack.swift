@@ -11,7 +11,7 @@ protocol CoreDataStackProtocol {
     func save()
     var managedContext: NSManagedObjectContext { get }
 }
-final class CoreDataStack: CoreDataStackProtocol {
+final class CoreDataStack: CoreDataStackProtocol {    
     private let container: NSPersistentContainer!
     lazy var managedContext: NSManagedObjectContext = container.viewContext
     init() {
